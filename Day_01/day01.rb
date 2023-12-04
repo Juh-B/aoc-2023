@@ -1,5 +1,5 @@
 class Day01
-  file = File.readlines('./sample.txt')
+  file = File.readlines('./input.txt')
 
   calibration = 0
 
