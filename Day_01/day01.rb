@@ -19,39 +19,35 @@ class Day01
   file.each do |line|
     number = []
     words = {
-      "one" => 1,
-      "two" => 2,
-      "three" => 3,
-      "four" => 4,
-      "five" => 5,
-      "six" => 6,
-      "seven" => 7,
-      "eight" => 8,
-      "nine" => 9,
-      "1" => 1,
-      "2" => 2,
-      "3" => 3,
-      "4" => 4,
-      "5" => 5,
-      "6" => 6,
-      "7" => 7,
-      "8" => 8,
-      "9" => 9
+      'one' => 1,
+      'two' => 2,
+      'three' => 3,
+      'four' => 4,
+      'five' => 5,
+      'six' => 6,
+      'seven' => 7,
+      'eight' => 8,
+      'nine' => 9,
+      '1' => 1,
+      '2' => 2,
+      '3' => 3,
+      '4' => 4,
+      '5' => 5,
+      '6' => 6,
+      '7' => 7,
+      '8' => 8,
+      '9' => 9
     }
 
     first_digit = line.scan(/\d|one|two|three|four|five|six|seven|eight|nine/).first
     last_digit = line.scan(/\d|one|two|three|four|five|six|seven|eight|nine/).last
-
     number << words[first_digit]
     number << words[last_digit]
-    part_02_calibration += number.join.to_i
 
+    part_02_calibration += number.join.to_i
   end
 
-  puts part_01_calibration
-  puts part_02_calibration
-
-  # puts "Part 01 -> The sum of the calibration values is #{part_01_calibration}."
-  # puts '------------'
-  # puts "Part 02 -> The sum of the calibration values is #{part_02_calibration}."
+  puts "Part 01 -> The sum of the calibration values is #{part_01_calibration}."
+  puts '------------'
+  puts "Part 02 -> The sum of the calibration values is #{part_02_calibration}."
 end
