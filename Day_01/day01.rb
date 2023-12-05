@@ -19,30 +19,16 @@ class Day01
   file.each do |line|
     number = []
     words = {
-      'one' => 1,
-      'two' => 2,
-      'three' => 3,
-      'four' => 4,
-      'five' => 5,
-      'six' => 6,
-      'seven' => 7,
-      'eight' => 8,
-      'nine' => 9,
-      '1' => 1,
-      '2' => 2,
-      '3' => 3,
-      '4' => 4,
-      '5' => 5,
-      '6' => 6,
-      '7' => 7,
-      '8' => 8,
-      '9' => 9
+      'one' => 1, 'two' => 2, 'three' => 3, 'four' => 4, 'five' => 5,
+      'six' => 6, 'seven' => 7, 'eight' => 8, 'nine' => 9,
+      '1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5,
+      '6' => 6, '7' => 7, '8' => 8, '9' => 9
     }
 
-    first_digit = line.scan(/\d|one|two|three|four|five|six|seven|eight|nine/).first
-    last_digit = line.scan(/\d|one|two|three|four|five|six|seven|eight|nine/).last
-    number << words[first_digit]
-    number << words[last_digit]
+    digits = line.scan(/\d|one|two|three|four|five|six|seven|eight|nine/)
+
+    number << words[digits.first]
+    number << words[digits.last]
 
     part_02_calibration += number.join.to_i
   end
