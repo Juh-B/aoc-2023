@@ -1,6 +1,7 @@
 class Day02
-  file = File.readlines('./sample.txt')
-  # 12 red cubes, 13 green cubes, and 14 blue cubes
+  file = File.readlines('./input.txt')
+
+  # Part 01
   possible_games = 0
 
   file.each do |line|
@@ -8,7 +9,7 @@ class Day02
 
     game_possibility = 0
     game_round = 0
-    colors = ['blue', 'red', 'green']
+    colors = ['red', 'green', 'blue']
     expression = /(\d+)\s*(#{colors.join('|')})/
 
     games.each do |game|
@@ -18,7 +19,7 @@ class Day02
         cube << match.reverse
         cubes = Hash[cube]
 
-        if cubes.all? { |color, quantity| quantity.to_i <= { 'red' => 12, 'blue' => 14, 'green' => 13 }[color] }
+        if cubes.all? { |color, quantity| quantity.to_i <= { 'red' => 12, 'green' => 13, 'blue' => 14 }[color] }
           "Possible"
         else
           "Impossible"
@@ -39,5 +40,30 @@ class Day02
 
   puts "Part 01 -> The sum of the possible games is #{possible_games}."
   puts '------------'
-  # puts "Part 02 -> The sum of the possible games is #{possible_games}."
+
+  # Part 02
+  power = []
+
+  file.each do |line|
+    red_cubes = []
+    green_cubes = []
+    blue_cubes = []
+    colors = ['red', 'green', 'blue']
+    expression = /(\d+)\s*(#{colors.join('|')})/
+
+    cubes = line.scan(expression)
+    cubes.select do |cube|
+      if cube[1] == 'red'
+        red_cubes << cube[0].to_i
+      elsif cube[1] == 'green'
+        green_cubes << cube[0].to_i
+      else cube[1] == 'blue'
+        blue_cubes << cube[0].to_i
+      end
+    end
+
+    power << (red_cubes.max * green_cubes.max * blue_cubes.max)
+  end
+
+  puts "Part 02 -> The sum of the possible games is #{power.sum}."
 end
