@@ -1,6 +1,6 @@
 require 'set'
 class Day03
-  file = File.readlines('./sample.txt')
+  file = File.readlines('./input.txt')
 
   # Part 01
   syms = []
